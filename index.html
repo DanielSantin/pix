@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Pagar com Pix</title>
+
+  <!-- Preview bonito no WhatsApp -->
+  <meta property="og:title" content="Pagamento via Pix">
+  <meta property="og:description" content="Clique para pagar seu pedido">
+  <meta property="og:image" content="https://i.imgur.com/yourimage.png">
+
+  <style>
+    body {
+      font-family: Arial;
+      background: #0f172a;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .card {
+      background: #1e293b;
+      padding: 25px;
+      border-radius: 15px;
+      text-align: center;
+      width: 300px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+
+    .btn {
+      background: #22c55e;
+      padding: 12px;
+      border-radius: 10px;
+      margin-top: 15px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .btn:hover {
+      background: #16a34a;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <h2>Pagamento Pix</h2>
+  <p id="pedido"></p>
+  <p id="valor"></p>
+
+  <div class="btn" onclick="copiarPix()">📋 Copiar Pix</div>
+</div>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const pedido = params.get("pedido");
+  const valor = params.get("valor");
+
+  document.getElementById("pedido").innerText = "Pedido: " + pedido;
+  document.getElementById("valor").innerText = "Valor: R$ " + valor;
+
+  const pixCode = "COLE_SEU_PIX_AQUI";
+
+  function copiarPix() {
+    navigator.clipboard.writeText(pixCode);
+    alert("Pix copiado!");
+  }
+</script>
+
+</body>
+</html>
